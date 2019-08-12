@@ -15,6 +15,9 @@
 // ------------------- Active Storage無効化
 // require activestorage
 // ------------------- Active Storage無効化
-
+//= require jquery
+//= require rails-ujs
+//= require cocoon
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
