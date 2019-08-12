@@ -1,0 +1,2 @@
+class AdminPurchaseHistoriesController < ApplicationController
+end

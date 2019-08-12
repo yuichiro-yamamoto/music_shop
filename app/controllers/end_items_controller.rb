@@ -1,0 +1,2 @@
+class EndItemsController < ApplicationController
+end
