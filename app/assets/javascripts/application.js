@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
+
+// ------------------- Active Storage無効化
+// require activestorage
+// ------------------- Active Storage無効化
+
 //= require turbolinks
 //= require_tree .
