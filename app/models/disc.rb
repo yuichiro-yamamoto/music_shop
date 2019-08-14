@@ -1,9 +1,5 @@
 class Disc < ApplicationRecord
-<<<<<<< HEAD
-  has_many :musics
-=======
   has_many :musics, dependent: :destroy
->>>>>>> tama/develop
 
   belongs_to :item
 

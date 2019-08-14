@@ -1,14 +1,10 @@
 class EndItemsController < ApplicationController
 
 	def index
-		@newitems = Item.page(params[:page]).per(4).all
-		respond_to do |format|
-      		format.html
-      		format.js
-    	end
-		@cheapitems = Item.where("price <= ?", 1000).page(params[:page]).per(4)
-		@fewitems = Item.where("stock <= ?", 3).page(params[:page]).per(4)
-		@allitems = Item.all
+		@new_items = Item.page(params[:page]).per(4)
+		@cheap_items = Item.where("price <= ?", 1000).page(params[:page]).per(4)
+		@few_items = Item.where("stock <= ?", 3).page(params[:page]).per(4)
+		@all_items = Item.page(params[:page]).per(20)
 		@ranking = Item.order("sale_number DESC").limit(10)
 	end
 
