@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     post 'add', :on => :collection
   end
   resources :end_items, only: [:index, :show]do
+    resources :end_reviews, only: [:create]
     get 'search_result', :on => :collection
     post 'search', :on => :collection
   end
-  resources :end_reviews, only: [:create]
   resources :end_favorites, only: [:create, :destroy]
   resources :end_purchases, only: [:index, :create]
   resources :admin_users, only: [:index, :update, :destroy, :edit]do
