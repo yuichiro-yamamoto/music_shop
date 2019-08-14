@@ -1,0 +1,17 @@
+<%= form_with url: search_admin_items_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_name" %>
+  <%= f.label "シングル/アルバム名"%> <br>
+  <%= f.text_field "search_word"%>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= form_with url: search_admin_items_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_stock" %>
+  <%= f.label "在庫数"%> <br>
+  残りが　<%= f.text_field "number"%>　<%= f.select "condition", [["以上", "以上"],["である", "である"],["以下", "以下"]] %>　<%= f.submit "検索" %>
+<% end %>
+
+<%= form_with url: search_admin_items_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_condition" %>
+  <label><%= f.radio_button "sale_condition", "販売中",:checked => true %>販売中</label>　<label><%= f.radio_button "sale_condition", "販売停止中" %>販売停止中</label> <%= f.submit "検索" %>
+<% end %>

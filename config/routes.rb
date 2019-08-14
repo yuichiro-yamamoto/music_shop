@@ -10,26 +10,22 @@ Rails.application.routes.draw do
     post 'add', :on => :collection
   end
   resources :end_items, only: [:index, :show]do
-    get 'search_result', :on => :collection
-    post 'search', :on => :collection
+    get 'search', :on => :collection
   end
   resources :end_reviews, only: [:create]
   resources :end_favorites, only: [:create, :destroy]
   resources :end_purchases, only: [:index, :create]
   resources :admin_users, only: [:index, :update, :destroy, :edit]do
-    get 'search_result', :on => :collection
-    post 'search', :on => :collection
+    get 'search', :on => :collection
   end
   resources :admin_items, except: [:show]do
-    get 'search_result', :on => :collection
-    post 'search', :on => :collection
+    get 'search', :on => :collection
   end
   resources :admin_reviews, only: [:edit, :update, :destroy, :index]do
-    get 'search_result', :on => :collection
-    post 'search', :on => :collection
+    get 'search', :on => :collection
   end
   resources :admin_purchase_histories, only: [:update, :show, :index]do
-    post 'search', :on => :collection
+    get 'search', :on => :collection
   end
 
   devise_for :admin_users, skip: :all
