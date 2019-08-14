@@ -1,0 +1,24 @@
+<table>
+  <thread>
+    <tr>
+      <th>ID</th><th>画像</th><th>シングル/アルバム名</th><th>ステータス</th><th>在庫</th><th>価格(税抜き)</th><th>表示</th><th>編集</th><th>削除</th>
+    </tr>
+  </thread>
+  <tbody>
+  <% items.each do |item|%>
+
+    <tr>
+      <td><%= item['id'] %></td>
+      <td><%= image_tag attachment_url(item, :item_image, :fill, 50, 50, format: "jpg"),class: 'attachment user profile_image fallback' %></td>
+      <td><%= item['item_name'] %></td>
+      <td><%= item['sale_condition'] %></td>
+      <td><%= item['stock'] %></td>
+      <td><%= item['price'] %></td>
+      <td>rink</td>
+      <td><%= link_to "編集", edit_admin_item_path(item['id']) %></td>
+      <td><%= link_to "削除", admin_item_path(item['id']), method: :delete %></td>
+    </tr>
+
+  <% end %>
+  </tbody>
+</table>

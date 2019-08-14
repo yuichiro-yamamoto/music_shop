@@ -1,0 +1,53 @@
+<% url = request.path.split("/")[3] =='edit' ? admin_item_path : admin_items_path %>
+<%= form_with model: item, url: url, local: true do |f| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <label><%= f.radio_button :sale_condition, "販売中" ,:checked => true%>販売中</label>
+  <label><%= f.radio_button :sale_condition, "販売停止中" %>販売停止中</label> <br>
+
+  <%= f.select :genre_id, [["J-pop",1],["K-pop",2],["A-pop",3]] %><%= f.select :label_id, [["king",1],["top",2],["hoge",3]] %> <br>
+
+  <%= f.attachment_field :item_image %> <br>
+
+  <%= f.label :item_name %> <br>
+  <%= f.text_field :item_name %> <br>
+
+  <%= f.label :artist_id %> <br>
+  <%= f.text_field :artist_id %> <br>
+
+  <div class="discs">
+    <%= f.fields_for :discs do |form| %>
+
+      <%= render "disc_fields", f: form %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association "ディスク追加", f , :discs %>
+    </div>
+
+  </div>
+
+
+  <%= f.label :price %> <br>
+  <%= f.text_field :price %> <br>
+
+  <%= f.label :stock %> <br>
+  <%= f.text_field :stock %> <br>
+
+  <% if request.path.split("/")[3] =='edit' %>
+    <h3>販売数</h3>
+    <h3><%= item["sale_number"] %></h3>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
