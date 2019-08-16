@@ -1,9 +1,5 @@
 class Disc < ApplicationRecord
-<<<<<<< HEAD
-  has_many :musics
-=======
   has_many :musics, dependent: :destroy
->>>>>>> abc/develop
 
   belongs_to :item
 
