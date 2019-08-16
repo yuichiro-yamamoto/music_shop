@@ -1,0 +1,41 @@
+<%= form_with url: search_admin_items_path, method: :get, local: true, class: "y_search_item_name" do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_name" %>
+  <h3 class="y_h3">シングル/アルバム名</h3>
+  <%= f.text_field "search_word", class: "y_search_text_field", placeholder: "シングル/アルバム名"%>
+  <%= f.submit "検索",class: "y_search_button" %>
+<% end %>
+
+<%= form_with url: search_admin_items_path, method: :get, local: true, class: "y_search_item_stock" do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_stock" %>
+  <h3 class="y_h3">在庫数</h3>
+  <div>
+    <span>残りが</span>　
+    <%= f.text_field "number", class: "y_search_text_field", placeholder: "在庫数"%>
+
+    <div class="y_select y_select_content">
+      <select>
+        <option value=0>以下</option>
+        <option value=1>である</option>
+        <option value=2>以上</option>
+      </select>
+    </div>
+    <%= f.submit "検索",class: "y_search_button" %>
+  </div>
+
+<% end %>
+
+<%= form_with url: search_admin_items_path, method: :get, local: true, class: "y_search_item_condition" do |f| %>
+  <%= f.hidden_field "search_method", :value => "item_condition" %>
+  <h3 class="y_h3">販売状態</h3>
+
+  <%= f.radio_button :sale_condition, "販売中", class: "y_search_radio_input",:checked => true %>
+  <%= f.label :sale_condition,"販売中", value: "販売中", class:"y_search_radio_label y_start" %>
+
+  <span>か</span>
+
+  <%= f.radio_button :sale_condition, "販売停止中", class: "y_search_radio_input" %>
+  <%= f.label :sale_condition,"販売停止中", value:"販売停止中" , class:"y_search_radio_label"%>
+
+
+  <%= f.submit "検索",class: "y_search_button" %>
+<% end %>
