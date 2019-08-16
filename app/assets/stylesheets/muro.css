@@ -1,0 +1,20 @@
+header {
+  height: 130px;
+  width: 1000px;
+  background-color: #87CEEB;
+}
+.m_header-button-1 {
+  width: 180px;
+  height: 120px;
+  background-color: white;
+  font-size: 30px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 45px;
+  text-align: center;
+  margin:10px 10px;
+}
+
+.m_header-button-2 {
+  
+}
