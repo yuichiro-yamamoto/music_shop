@@ -1,5 +1,6 @@
 <% url = request.path.split("/")[3] =='edit' ? admin_item_path : admin_items_path %>
 <%= form_with model: item, url: url, local: true do |f| %>
+
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -12,8 +13,16 @@
     </div>
   <% end %>
 
-  <label><%= f.radio_button :sale_condition, "販売中" ,:checked => true%>販売中</label>
-  <label><%= f.radio_button :sale_condition, "販売停止中" %>販売停止中</label> <br>
+<div class="y_codition_form">
+  <%= f.radio_button :sale_condition, "販売中", class: "y_registration_radio_input",:checked => true %>
+  <%= f.label :sale_condition,"販売中", value: "販売中", class:"y_registration_radio_label" %>
+
+  <%= f.radio_button :sale_condition, "販売停止中", class: "y_registration_radio_input" %>
+  <%= f.label :sale_condition,"販売停止中", value:"販売停止中" , class:"y_registration_radio_label"%>
+</div>
+
+
+
 
   <%= f.select :genre_id, [["J-pop",1],["K-pop",2],["A-pop",3]] %><%= f.select :label_id, [["king",1],["top",2],["hoge",3]] %> <br>
 
