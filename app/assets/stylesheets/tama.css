@@ -54,7 +54,7 @@
 }
 
 .y_select select {
-    width: 100%;
+    width: 1000px;
     padding-right: 1em;
     cursor: pointer;
     text-indent: 0.01px;
