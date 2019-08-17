@@ -1,20 +1,45 @@
-header {
+.admin-header {
   height: 130px;
   width: 1000px;
-  background-color: #87CEEB;
+  background-color: #DCDCDC;
 }
 .m_header-button-1 {
-  width: 180px;
-  height: 120px;
-  background-color: white;
-  font-size: 30px;
-  border-style: solid;
-  border-radius: 5px;
-  padding: 45px;
-  text-align: center;
-  margin:10px 10px;
+    width: 100%;
+    height: 115px;
+    display: inline-block;
+    background-color: #26a69b;/*背景色*/
+    color: #FFF;/*文字色*/
+    font-size: 30px;/*文字サイズ*/
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: 0.05em;/*字間*/
+    padding-top: 40px;
+    border-radius: 3px;/*角の丸み*/
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);/*影*/
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s ease-out;/*変化を緩やかに*/
+    margin-top: 7px;
+    text-align: center;
 }
 
 .m_header-button-2 {
-  
+    width: 100%;
+    height: 30px;
+    display: inline-block;
+    background-color: #26a69b;/*背景色*/
+    color: #FFF;/*文字色*/
+    font-size: 20px;/*文字サイズ*/
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: 0.05em;/*字間*/
+    padding-top: 5px;
+    border-radius: 3px;/*角の丸み*/
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);/*影*/
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s ease-out;/*変化を緩やかに*/
+    margin: 5px;
+    margin-top: 7px;
+    text-align: center;
 }
