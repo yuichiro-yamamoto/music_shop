@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   end
   resources :end_items, only: [:index, :show]do
     resources :end_reviews, only: [:create]
+    resource :end_favorites, only: [:create, :destroy]
     get 'search_result', :on => :collection
     post 'search', :on => :collection
     get 'search', :on => :collection
   end
-  resources :end_favorites, only: [:create, :destroy]
   resources :end_purchases, only: [:index, :create]
   resources :admin_users, only: [:index, :update, :destroy, :edit]do
     get 'search', :on => :collection

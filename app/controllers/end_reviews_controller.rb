@@ -1,16 +1,14 @@
 class EndReviewsController < ApplicationController
 
 	def create
-		post_image = PostImage.find(params[:post_image_id])
-    	comment = current_user.post_comments.new(post_comment_params)
-    	comment.post_image_id = post_image.id
-    	comment.save
-    	redirect_to post_image_path(post_image)
+		item = Item.find(params[:end_item_id])
+		review = current_user.reviews.new(end_review_params)
+		review.item_id = item.id
+		review.save
+		redirect_to item_path(item)
 	end
-
-private
-	def review_params
-  		params.require(:review).permit(:end_user_id, :end_review_id,)
-	end
-end
+	private
+		def end_review_params
+			params.require(:end_review).permit(:end_user_id, :item_id, :review)
+		end
 end

@@ -1,11 +1,11 @@
 class EndItemsController < ApplicationController
 
 	def index
-		@new_items = Item.page(params[:page]).per(4)
-		@cheap_items = Item.where("price <= ?", 1000).page(params[:page]).per(4)
-		@few_items = Item.where("stock <= ?", 3).page(params[:page]).per(4)
-		@all_items = Item.page(params[:page]).per(20)
-		@ranking = Item.order("sale_number DESC").limit(10)
+		@new_items = Item.includes(:artist).page(params[:page]).per(4).order(id: "DESC")
+		@cheap_items = Item.includes(:artist).where("price <= ?", 1000).page(params[:page]).per(4).order(id: "DESC")
+		@few_items = Item.includes(:artist).where("stock <= ?", 3).page(params[:page]).per(4).order(id: "DESC")
+		@all_items = Item.includes(:artist).page(params[:page]).per(20).order(id: "DESC")
+		@ranking = Item.includes(:artist).order(sale_number: "DESC").limit(10)
 	end
 
 	def search_result
@@ -17,6 +17,7 @@ class EndItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		@review = Review.new
+		@reviews = Review.includes(:artist).page(params[:page]).per(5).order(id: "DESC")
 	end
 
 end

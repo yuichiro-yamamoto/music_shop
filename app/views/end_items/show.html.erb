@@ -1,1 +1,124 @@
-show
+<div class="container">
+ 	<div class="row">
+		<div class="col-xs-12">
+			<h3>商品詳細</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div><%= attachment_image_tag @item, :item_image, :fill, 280, 280, format: "jpeg" %></div>
+		</div>
+		<div class="col-xs-4">
+			<div>
+				<p>▼アルバム・シングル名</p>
+				<%= @item.item_name %>
+			</div>
+			<div>
+				<p>▼アーティスト名</p>
+				<%= @item.artist.artist_name %>
+			</div>
+			<div>
+				<p>▼販売状況</p>
+				<%= @item.sale_condition %>
+			</div>
+			<div>
+				<p>▼在庫数</p>
+				<%= @item.stock %>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div>
+				<p>▼税抜き価格(暫定)</p>
+				<%= @item.price %>
+			</div>
+			<p>数量</p>
+			<p>カートに入れる</p>
+			<% if @item.favorited_by?(current_user) %>
+  				<li>
+    				<%= link_to end_item_end_favorites_path(@item), method: :delete do %>
+      					<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+      					<%= @item.favorites.count %> いいね
+    				<% end %>
+  				</li>
+			<% else %>
+  				<li>
+    				<%= link_to end_item_end_favorites_path(@item), method: :post do %>
+      					<i class="fa fa-heart-o" aria-hidden="true"></i>
+      					<%= @item.favorites.count %> いいね
+    				<% end %>
+  				</li>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<div>
+				<p>▼ジャンル</p>
+				<%= @item.genre.genre_name %>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div>
+				<p>▼レーベル</p>
+				<%= @item.label.label_name %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>CD収録曲</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<% @item.discs.order("disc_number").each do |disc| %>
+				<h4>ディスク<%= disc.disc_number %></h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+				<% disc.musics.order("music_order").each do |music| %>
+					<%= music.music_order %>
+					<%= music.music_name %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>レビューを投稿する</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<%= form_for [@item, @review], url: end_item_end_reviews_path(@item) do |f| %>
+				<%= f.text_field :review_title, rows:'2', class: "form-control",placeholder: "タイトルをここに" %>
+				<%= f.text_area :review_body, rows:'5', class: "form-control",placeholder: "レビューをここに" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+				<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>レビュー一覧</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<% @reviews.each do |review| %>
+				<%= review.review_title %>
+				<%= review.review_body %>
+				<%= review.created_at %>
+				<%= review.updated_at %>
+			<% end %>
+		</div>
+	</div>
+</div>
