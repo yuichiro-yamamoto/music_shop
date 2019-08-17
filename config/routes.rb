@@ -40,8 +40,8 @@ Rails.application.routes.draw do
     get 'end_users/devise/sign_in' , to: 'devise/sessions#new', as: :new_end_user_session
     post 'end_users/devise/sign_in' , to: 'devise/sessions#create', as: :end_user_session
     delete 'end_users/devise/sign_out' , to: 'devise/sessions#destroy', as: :destroy_end_user_session
-    get 'end_users/devise/sign_up' , to: 'devise/registrations#new', as: :new_end_user_registration
-    post 'end_users/devise' , to: 'devise/registrations#create', as: :end_user_registration
+    get 'end_users/devise/sign_up' , to: 'end_users/registrations#new', as: :new_end_user_registration
+    post 'end_users/devise' , to: 'end_users/registrations#create', as: :end_user_registration
     delete 'end_users/devise' , to: 'devise/registrations#destroy', as: :destroy_end_user_registration
   end
 
