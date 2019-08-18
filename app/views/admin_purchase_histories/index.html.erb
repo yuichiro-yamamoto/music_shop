@@ -1,1 +1,28 @@
 <%= render 'admin_header/header' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>注文番号</th>
+      <th>注文日</th>
+      <th>ステータス</th>
+      <th>商品名</th>
+      <th>歌手名</th>
+      <th>枚数</th>
+      <th>発送詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase_histories.each do |p| %>
+      <tr>
+        <td><%= p. %></td>
+        <td><%= p. %></td>
+        <td><%= p. %></td>
+        <td><%= p. %></td>
+        <td><%= p. %></td>
+        <td><%= p. %></td>
+        <td><%= link_to "a" purchase_histories</td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
