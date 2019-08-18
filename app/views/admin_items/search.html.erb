@@ -1,3 +1,21 @@
-<h2>商品一覧</h2>
-<%= render "search_form" %>
-<%= render "item_table", items: @items %>
+<div class="head">head</div>
+
+<div class="y_item_content">
+  <h2 class="y_h2">商品検索結果一覧</h2>
+
+  <div class="y_search_form">
+    <h3 class="y_h3">検索方法選択</h3>
+    <div class="y_select y_select_content">
+      <select>
+        <option value=0>シングル/アルバム名</option>
+        <option value=1>在庫数</option>
+        <option value=2>販売状態</option>
+      </select>
+    </div>
+    <%= render "search_form" %>
+  </div>
+
+  <p>商品検索一致件数　<%= @items.count %>件</p>
+  <%= render "item_table", items: @items %>
+
+</div>

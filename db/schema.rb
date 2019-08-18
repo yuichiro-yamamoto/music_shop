@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_070445) do
+ActiveRecord::Schema.define(version: 2019_08_16_172822) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_070445) do
     t.string "encrypted_password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
   end
 
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_070445) do
     t.integer "usually_payment", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["first_name"], name: "index_end_users_on_first_name"
     t.index ["last_name"], name: "index_end_users_on_last_name"

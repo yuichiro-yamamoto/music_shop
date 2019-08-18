@@ -16,6 +16,7 @@ class EndItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
+		@cart = CartItem.new
 		@review = Review.new
 		@reviews = Review.includes(:artist).page(params[:page]).per(5).order(id: "DESC")
 	end
