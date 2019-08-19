@@ -1,0 +1,15 @@
+<div class="container">
+ 	<div class="row">
+		<div class="col-xs-12">
+			<h2>退会ページ</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<%= form_tag(end_user_delete_path(current_end_user.id),:method => 'post') do %>
+				<%= email_field_tag :delete_email %>
+				<%= submit_tag %>
+			<% end %>
+        </div>
+    </div>
+</div>
