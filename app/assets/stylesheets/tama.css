@@ -518,3 +518,26 @@ input[readonly] {
     margin-left: 40px;
     text-align: right;
 }
+
+/*-----------------------------------*/
+.y_admin_user_content{
+    width: 1000px;
+    padding: 0 50px;
+}
+
+.test{
+    margin-left: 120px;
+    width: 50%;
+    text-align: center;
+}
+
+.y_search_user_name > h3{
+    margin-left: 40px;
+}
+
+.y_admin_user_content > p{
+    margin: 30px 0 0 0;
+    text-align: right;
+    font-weight: bold;
+    font-size: 30px;
+}
