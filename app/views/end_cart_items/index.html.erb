@@ -2,8 +2,7 @@
 
 <%= link_to "購入する", end_purchases_path %>
 
-<% a = getModel(@cartts) %>
-<% a.each do |cart| %>
+<% @carts.each do |cart| %>
   <div><%= cart.image %></div>
   <span><%= cart.name %></span><br>
   <span><%= cart.artist %></span><br>
