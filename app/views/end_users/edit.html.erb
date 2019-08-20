@@ -1,0 +1,52 @@
+<div class="container">
+ 	<div class="row">
+		<div class="col-xs-12">
+			<h2>ユーザー情報編集</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= form_for(@user) do |f| %>
+				姓<br>
+				<%= f.text_field :last_name %><br>
+		</div>
+		<div class="col-xs-3">
+				名<br>
+				<%= f.text_field :first_name %><br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+				カナ(姓)<br>
+				<%= f.text_field :last_name_kana %><br>
+		</div>
+		<div class="col-xs-3">
+				カナ(名)<br>
+				<%= f.text_field :first_name_kana %><br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+				<%= fields_for @address do |c| %>
+      				郵便番号<br>
+      				<%= c.text_field :postal_code %><br>
+      				住所<br>
+      				<%= c.text_area :address %><br>
+      				電話番号<br>
+      				<%= c.text_field :telephone_number %><br>
+      			<% end %>
+      			メールアドレス<br>
+      			<%= f.email_field :email %><br>
+      			現在のパスワード<br>
+      			<%= f.password_field :current_password %><br>
+      			変更後のパスワード<br>
+      			<%= f.password_field :password %><br>
+      			変更後のパスワード(再確認)<br>
+      			<%= f.password_field :password_confirmation %><br>
+      			よく使う支払い方法<br>
+      			<%= f.select :usually_payment, EndUser.usually_payments.keys.to_a, {} %><br>
+      			<%= f.submit %>
+			<% end %>
+		</div>
+	</div>
+</div>
