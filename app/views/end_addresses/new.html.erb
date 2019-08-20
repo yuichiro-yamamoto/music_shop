@@ -1,0 +1,20 @@
+<div style="text-align:center;"><h1>新規追加住所登録</h1></div>
+
+  <%= form_with model: @user, url: end_addresses_path, local: true do |form| %>
+
+   <div style="text-align:center;"><h3>名前</h3></div>
+     <p class="text-center"><%= form.text_field :name %></p>
+
+   <div style="text-align:center;"><h3>郵便番号</h3></div>
+    <p class="text-center"><%= form.text_field :postal_code %></p>
+
+   <div style="text-align:center;"><h3>住所</h3></div>
+    <p class="text-center"><%= form.text_field :address %></p>
+
+   <div style="text-align:center;"><h3>電話番号</h3></div>
+    <p class="text-center"><%= form.text_field :telephone_number %></p>
+
+   <p class="text-center"><%= form.submit %></p>
+
+  <% end %>
+
