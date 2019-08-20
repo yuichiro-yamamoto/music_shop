@@ -21,13 +21,14 @@ class EndUsersController < ApplicationController
 	end
 
 	def delete
-		delete = EndUser.find_by(email:params[:delete_email])
-		if current_end_user.id == delete
-			current_end_user.delete_flag = true
-			redirect_to end_item_path(36)
-		else
-			redirect_to root_path
+		if delete = EndUser.find_by(email:params[:delete_email])
+			if current_end_user.id == delete.id
+				current_end_user.delete_flag = true
+				redirect_to destroy_end_user_session_path, method: :delete
+			end
 		end
+			redirect_to end_item_path(36)
+			# 後で書き換えます
 	end
 
 	private

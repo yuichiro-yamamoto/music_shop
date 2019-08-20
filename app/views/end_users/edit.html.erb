@@ -37,6 +37,12 @@
       			<% end %>
       			メールアドレス<br>
       			<%= f.email_field :email %><br>
+      			現在のパスワード<br>
+      			<%= f.password_field :current_password %><br>
+      			変更後のパスワード<br>
+      			<%= f.password_field :password %><br>
+      			変更後のパスワード(再確認)<br>
+      			<%= f.password_field :password_confirmation %><br>
       			よく使う支払い方法<br>
       			<%= f.select :usually_payment, EndUser.usually_payments.keys.to_a, {} %><br>
       			<%= f.submit %>
