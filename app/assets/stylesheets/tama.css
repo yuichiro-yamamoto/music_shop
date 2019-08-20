@@ -6,12 +6,12 @@
 
 .head{
     background-color: orange;
-    width: 100%;
+    width: 1000px;
     height: 60px;
 }
 
 .y_item_content{
-    width: 100%;
+    width: 1000px;
     padding: 0 50px;
 }
 
@@ -22,6 +22,7 @@
 
 .y_h3{
     font-size: 30px;
+    font-weight: bold;
 }
 
 /*index-------------------------- */
@@ -288,4 +289,232 @@
 }
 
 
+
+.y_registration_pulldown{
+    display: inline-block;
+    width: 40%;
+    margin-left: 58px;
+}
+.y_registration_pulldown_label{
+    margin-left: 300px;
+}
+
+.y_registration_pulldown_genre{
+    margin-left: 45px;
+    margin-top: 40px;
+}
+
+
 /*-------------------------- */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    margin-left: 150px;
+    margin-top: 200px;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+    width: 20%;
+    height: 0;
+
+}
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.y_image_submit_btn{
+    font-size: 35px;
+    margin: 40px;
+}
+
+.y_upload_view{
+    display: inline-block;
+    margin-left: 40px;
+    border: solid 2px black;
+}
+
+.y_image_upload{
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.y_image_file_name{
+    position: absolute;
+    font-size: 25px;
+    margin-top: 80px;
+    margin-left: 80px;
+}
+
+.y_image_title{
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.y_form_text_field{
+    font-size: 25px;
+    width: 70%;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    border: 2px solid #1b2538;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.y_item_form, .y_artist_form, .y_price_form, .y_stock_form{
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.y_form_submit{
+    width: 0;
+    margin-top: 80px;
+    margin-left: 220px;
+}
+
+.y_item_form_submit{
+    font-size: 30px;
+}
+
+.y_form_submit > .btn{
+    font-size: 50px;
+    width: 450px;
+}
+
+.y_price_form > input{
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.y_price_form > span, .y_price_form > div > span, .y_stock_form > span{
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.y_price_form > div {
+    text-align: right;
+    margin-top: 10px;
+    border-top: solid 2px black;
+}
+
+.y_task_price{
+    color: red;
+}
+
+.y_stock_form > input{
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.form-disc > span{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.form-disc{
+    border-bottom: solid 3px blue;
+    margin-left: 80px;
+}
+
+.y_music_form{
+    position: relative;
+}
+
+.y_music_form > h3{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.discs > .nested-fields{
+    margin-top: 40px;
+}
+
+.discs > .nested-fields:nth-child(1){
+    margin-top: 0px;
+}
+
+.form-music > span{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.form-music{
+    margin:5px 0 5px 120px;
+}
+
+.form-music > input{
+    font-size: 25px;
+    width: 70%;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    border: 2px solid #1b2538;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.form-music > .btn{
+    margin-left: 55px;
+    margin-bottom: 6px;
+    font-size: 30px;
+}
+
+.form-disc > .btn{
+    margin-left: 495px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.form-disc > .btn{
+    margin-left: 495px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.music > .links >  .btn{
+    font-size: 30px;
+}
+
+.music > .links{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.discs > .links >  .btn{
+    font-size: 30px;
+    position: absolute;
+    top: 40px;
+    left: 345px;
+}
+
+.y_sale_number > span{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.y_sale_number{
+    border-top: solid 2px black;
+    margin-top: 10px;
+    margin-left: 40px;
+    text-align: right;
+}

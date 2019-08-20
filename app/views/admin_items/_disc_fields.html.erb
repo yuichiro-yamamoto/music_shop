@@ -1,9 +1,11 @@
-<div class="nested-fields">
+<div class="nested-fields y-nest">
 
   <div class="form-disc">
-    <%= f.label "ディスク" %>
-    <%= f.text_field :disc_number %>
-    <%= link_to_remove_association "ディスク削除", f %>
+    <span><span class="y_disc_num">1</span>枚目</span>　<%= link_to_remove_association "ディスク削除", f ,class:"btn btn-danger"%>
+    <div class="y_disc">
+      <%= f.hidden_field :disc_number ,:value => 1 %>
+    </div>
+
   </div>
 
   <div class="music">
@@ -12,7 +14,7 @@
     <%end%>
 
     <div class="links">
-      <%= link_to_add_association "曲名追加", f, :musics %>
+      <%= link_to_add_association "曲名追加", f, :musics, class:"btn btn-info" %>
     </div>
 
   </div>

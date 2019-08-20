@@ -13,50 +13,90 @@
     </div>
   <% end %>
 
-<div class="y_codition_form">
-  <%= f.radio_button :sale_condition, "販売中", class: "y_registration_radio_input",:checked => true %>
-  <%= f.label :sale_condition,"販売中", value: "販売中", class:"y_registration_radio_label" %>
+  <div class="y_codition_form">
+    <%= f.radio_button :sale_condition, "販売中", class: "y_registration_radio_input",:checked => true %>
+    <%= f.label :sale_condition,"販売中", value: 0, class:"y_registration_radio_label" %>
 
-  <%= f.radio_button :sale_condition, "販売停止中", class: "y_registration_radio_input" %>
-  <%= f.label :sale_condition,"販売停止中", value:"販売停止中" , class:"y_registration_radio_label"%>
-</div>
+    <%= f.radio_button :sale_condition, "販売停止中", class: "y_registration_radio_input" %>
+    <%= f.label :sale_condition,"販売停止中", value: 1 , class:"y_registration_radio_label"%>
+  </div>
 
+  <div class="y_registration_pulldown_genre y_h3">ジャンル
+    <span class="y_registration_pulldown_label">レーベル</span>
+  </div>
+  <div class="y_registration_pulldown y_select y_select_content">
+    <%= f.select :genre_id, genre_arrays(genre_model), class: "y_select y_select_content" %>
+  </div>
+  <div class="y_registration_pulldown y_select y_select_content">
+  <%= f.select :label_id, label_arrays(label_model) %> <br>
+  </div>
 
-
-
-  <%= f.select :genre_id, [["J-pop",1],["K-pop",2],["A-pop",3]] %><%= f.select :label_id, [["king",1],["top",2],["hoge",3]] %> <br>
-
-  <%= f.attachment_field :item_image %> <br>
-
-  <%= f.label :item_name %> <br>
-  <%= f.text_field :item_name %> <br>
-
-  <%= f.label :artist_id %> <br>
-  <%= f.text_field :artist_id %> <br>
-
-  <div class="discs">
-    <%= f.fields_for :discs do |form| %>
-
-      <%= render "disc_fields", f: form %>
-    <% end %>
-
-    <div class="links">
-      <%= link_to_add_association "ディスク追加", f , :discs %>
+  <div class="y_image_upload">
+    <h3 class="y_h3">カバー画像登録</h3>
+    <div class="y_upload_view">
+      <%= image_tag '/assets/music.jpeg', :size => '256x256' %>
     </div>
 
+    <span class="y_image_title">ファイル名</span>
+    <span class="y_image_file_name">画像が選択されていません</span>
+
+    <span class="btn btn-primary btn-file">
+      <span class="y_image_submit_btn">ファイル選択</span>
+      <%= f.attachment_field :item_image %>
+    </span>
   </div>
 
 
-  <%= f.label :price %> <br>
-  <%= f.text_field :price %> <br>
+  <div class="y_item_form">
+    <%= f.label :item_name , "シングル/アルバム名", class: "y_h3"%> <br>
+    <%= f.text_field :item_name, class: 'y_form_text_field', placeholder: "シングル/アルバム名"%> <br>
+  </div>
 
-  <%= f.label :stock %> <br>
-  <%= f.text_field :stock %> <br>
+  <div class="y_artist_form">
+    <%= f.label :artist_id,"アーティスト名", class: "y_h3" %> <br>
+    <%= f.text_field :artist_id, class: 'y_form_text_field', placeholder: "アーティスト名"%> <br>
+  </div>
+
+
+  <div class="y_music_form">
+    <h3 class="y_h3">曲名</h3>
+
+    <div class="discs">
+      <%= f.fields_for :discs do |form| %>
+
+        <%= render "disc_fields", f: form %>
+      <% end %>
+
+      <div class="links">
+        <%= link_to_add_association "ディスク追加", f , :discs, class:"btn btn-info"%>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="y_price_form">
+    <%= f.label :price, "税抜き価格", class: "y_h3" %> <br>
+    <span>￥</span> <%= f.text_field :price, class: 'y_form_text_field input_number_only' , placeholder: '0', autocomplete: "off" %> <span>円(税抜き)</span> <br>
+    <div> <span>税込み価格　￥</span><span class="y_task_price">0</span><span>円(税込み)</span> </div>
+  </div>
+
+  <div class="y_stock_form">
+    <%= f.label :stock, "在庫数",class: "y_h3" %> <br>
+    <span>残り</span><%= f.text_field :stock, class: 'y_form_text_field', autocomplete: "off", placeholder: '0' %><span>枚</span> <br>
+  </div>
+
 
   <% if request.path.split("/")[3] =='edit' %>
-    <h3>販売数</h3>
-    <h3><%= item["sale_number"] %></h3>
+    <div class="y_sale_number">
+      <span>販売数　<span><%= item["sale_number"] %>　枚</span></span>
+    </div>
+
   <% end %>
 
-  <%= f.submit %>
+  <div class="y_form_submit">
+    <%= f.submit "登録確定", class: "y_item_form_submit btn btn-primary " %>
+  </div>
+
+
 <% end %>

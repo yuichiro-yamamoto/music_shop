@@ -6,4 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-EndUser.create(email: "a@a", encrypted_password: "aiueo", last_name: "aiueo", first_name: "kakiku", last_name_kana: "aiueo", first_name_kana: "kakiku", delete_flag: "false", usually_payment: "0")
+Genre.create(genre_name: 'JPOP')
+Label.create(label_name: 'KING')
