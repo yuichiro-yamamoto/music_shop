@@ -1,0 +1,18 @@
+<%= form_with model: @purchase_detail do |f| %>
+
+  <% @carts.each do |cart| %>
+    <div><%= cart.image %></div>
+    <span><%= cart.name %></span>
+    <span><%= cart.artist %></span>
+    <span><%= cart.price %></span>
+    <span><%= cart.purchase_quantity %></span>
+  <% end %>
+
+  <%= form_for @address do |address| %>
+    <%= address.select :address_history[["自分宛",1]["A宛",2]["B宛",3]]
+
+
+
+
+<%= f.submit %>
+<% end %>
