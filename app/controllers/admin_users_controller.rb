@@ -5,17 +5,14 @@ class AdminUsersController < ApplicationController
 
 	def edit
 		@user = EndUser.find(params[:id])
-		puts "================="
-		puts @user.addresses.inspect
-		puts "================"
-		@addresses = @user.addresses[0]
+		@addresses = @user.addresses
 	end
 
 	def update
 		user = EndUser.find(params[:id])
 		addresses = user.addresses
 		user.update(end_user_params)
-		address.update(address_params)
+		addresses.update(address_params)
 		redirect_to admin_users_path
 	end
 

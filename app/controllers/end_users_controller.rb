@@ -5,7 +5,7 @@ class EndUsersController < ApplicationController
 	end
 
 	def unsubscribe
-    end
+  	end
 
 	def edit
 		@user = EndUser.find(params[:id])
@@ -16,7 +16,7 @@ class EndUsersController < ApplicationController
 		user = EndUser.find(params[:id])
 		addresses = user.addresses
 		user.update(end_user_params)
-		address.update(address_params)
+		addresses.update(address_params)
 		redirect_to root_path
 	end
 

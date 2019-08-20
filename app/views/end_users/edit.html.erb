@@ -27,7 +27,8 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-				<%= fields_for @addresses do |c| %>
+			<% @addresses.each do |address| %>
+				<%= fields_for address do |c| %>
       				郵便番号<br>
       				<%= c.text_field :postal_code %><br>
       				住所<br>
@@ -35,6 +36,7 @@
       				電話番号<br>
       				<%= c.text_field :telephone_number %><br>
       			<% end %>
+      		<% end %>
       			メールアドレス<br>
       			<%= f.email_field :email %><br>
       			現在のパスワード<br>
