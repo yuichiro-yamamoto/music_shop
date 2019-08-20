@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'end_items#index'
   resources :end_users, only: [:show, :edit, :update]do
     get 'unsubscribe', :on => :collection
-    post 'delete', :on => :collection
+    post 'delete'
   end
   resources :end_addresses, only: [:new, :create, :destroy]
 
@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     post 'add', :on => :collection
   end
   resources :end_items, only: [:index, :show]do
+    resources :end_reviews, only: [:create]
+    resource :end_favorites, only: [:create, :destroy]
+    get 'search_result', :on => :collection
+    post 'search', :on => :collection
     get 'search', :on => :collection
   end
-  resources :end_reviews, only: [:create]
-  resources :end_favorites, only: [:create, :destroy]
   resources :end_purchases, only: [:index, :create]
   resources :admin_users, only: [:index, :update, :destroy, :edit]do
     get 'search', :on => :collection
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
     get 'end_users/devise/sign_in' , to: 'devise/sessions#new', as: :new_end_user_session
     post 'end_users/devise/sign_in' , to: 'devise/sessions#create', as: :end_user_session
     delete 'end_users/devise/sign_out' , to: 'devise/sessions#destroy', as: :destroy_end_user_session
+    get '/end_users/devise/sign_out' => 'devise/sessions#destroy'
     get 'end_users/devise/sign_up' , to: 'end_users/registrations#new', as: :new_end_user_registration
     post 'end_users/devise' , to: 'end_users/registrations#create', as: :end_user_registration
     delete 'end_users/devise' , to: 'devise/registrations#destroy', as: :destroy_end_user_registration

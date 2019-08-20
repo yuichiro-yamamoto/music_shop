@@ -1,1 +1,13 @@
-<p>aa</p>
+<h1 class="cart-head">カート</h1>
+
+<%= link_to "購入する", end_purchases_path %>
+
+<% @carts.each do |cart| %>
+  <div><%= cart.image %></div>
+  <span><%= cart.name %></span><br>
+  <span><%= cart.artist %></span><br>
+  <span><%= cart.price %></span>
+  <div><%= cart.purchase_quantity %></div>
+  <div><%= cart.condition %></div>
+  <%= link_to "削除", current_end_cart_path, method: :delete %>
+<% end %>

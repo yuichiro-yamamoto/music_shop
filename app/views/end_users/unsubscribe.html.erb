@@ -1,7 +1,15 @@
-<h1>退会ページ</h1>
-
- <%= form_with model: @user, url: delete_end_users_path do |form| %>
-  <h3>メールアドレス</h3>
-  <p><%= form.text_field :email %></p>
-  <p><%= form.submit %></p>
- <% end %>
+<div class="container">
+ 	<div class="row">
+		<div class="col-xs-12">
+			<h2>退会ページ</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<%= form_tag(end_user_delete_path(current_end_user.id),:method => 'post') do %>
+				<%= email_field_tag :delete_email %>
+				<%= submit_tag %>
+			<% end %>
+        </div>
+    </div>
+</div>
