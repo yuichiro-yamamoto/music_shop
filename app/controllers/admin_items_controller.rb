@@ -7,12 +7,16 @@ class AdminItemsController < ApplicationController
     @item = Item.new
     @disc = @item.discs.build
     @music = @disc.musics.build
+    @genre = Genre.all
+    @label = Label.all
   end
 
   def edit
     item = Item.find(params['id'])
     item['artist_id'] = Artist.find(item['artist_id'])['artist_name']
     @item = item
+    @genre = Genre.all
+    @label = Label.all
   end
 
   def create
@@ -22,8 +26,7 @@ class AdminItemsController < ApplicationController
     else
       artist = artist[0]
     end
-    puts '^^^^^^^^^^'
-    puts item_params.inspect
+
     item = Item.new(item_params)
     item['sale_number'] = 0
     item['artist_id'] = artist['id']

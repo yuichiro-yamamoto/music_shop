@@ -1,9 +1,11 @@
 <div class="nested-fields form-inline">
-  <div class="form-tag-discription">
-    <%= f.label "曲順" %>
-    <%= f.text_field :music_order %>
-    <%= f.label "曲名" %>
-    <%= f.text_field :music_name %>
-    <%= link_to_remove_association "remove description", f %>
+  <div class="form-music">
+    <span class="y_music_order">1</span><span>.</span>
+    <span class="y_music">
+      <%= f.hidden_field :music_order ,:value => 1%>
+    </span>
+    <%= f.text_field :music_name, placeholder: "曲名" %>
+
+    <%= link_to_remove_association "曲削除", f ,class: "btn btn-danger"%>
   </div>
 </div>
