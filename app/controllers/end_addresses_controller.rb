@@ -1,6 +1,6 @@
 class EndAddressesController < ApplicationController
 
-	def new 
+	def new
 		@user = Address.new
 	end
 

@@ -5,19 +5,18 @@ class EndUsersController < ApplicationController
 	end
 
 	def unsubscribe
-    
-  end
+  	end
 
 	def edit
 		@user = EndUser.find(params[:id])
-		@address = Address.find(params[:id])
+		@addresses = @user.addresses
 	end
 
 	def update
 		user = EndUser.find(params[:id])
-		address = Address.find(params[:id])
+		addresses = user.addresses
 		user.update(end_user_params)
-		address.update(address_params)
+		addresses.update(address_params)
 		redirect_to root_path
 	end
 
@@ -39,5 +38,4 @@ class EndUsersController < ApplicationController
 		def address_params
 			params.require(:address).permit(:postal_code, :address, :telephone_number)
 		end
-  
 end
