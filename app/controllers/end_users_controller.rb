@@ -5,7 +5,8 @@ class EndUsersController < ApplicationController
 	end
 
 	def unsubscribe
-    end
+    
+  end
 
 	def edit
 		@user = EndUser.find(params[:id])
@@ -38,4 +39,5 @@ class EndUsersController < ApplicationController
 		def address_params
 			params.require(:address).permit(:postal_code, :address, :telephone_number)
 		end
+  
 end
