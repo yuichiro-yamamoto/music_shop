@@ -20,8 +20,8 @@ class EndUsersController < ApplicationController
 	end
 
 	def delete
-		if delete = EndUser.find_by(email:params[:delete_email])
-			if current_end_user.id == delete.id
+		if unsubscriber = EndUser.find_by(email:params[:unsubscribe_email])
+			if current_end_user.id == unsubscriber.id
 				current_end_user.delete_flag = true
 				redirect_to destroy_end_user_session_path, method: :delete
 			end

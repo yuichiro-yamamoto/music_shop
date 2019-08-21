@@ -1,4 +1,5 @@
 <%= render 'admin_header/header' %>
+
 <div class="container">
  	<div class="row">
 		<div class="col-xs-12">
@@ -7,7 +8,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-3">
-			<%= form_for(@user, :url => {:controller => :admin_users, :action => :update}) do |f| %>
+			<%= form_with model: @user, url: admin_user_path, local: true do |f| %>
 				<%= f.label :last_name, "姓" %><br>
 				<%= f.text_field :last_name %><br>
 		</div>
@@ -29,7 +30,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 				<%= f.fields_for :addresses do |a| %>
-      				<%= render "address_fields", f: a %>
+      				<%= render "end_users/address_fields", f: a %>
       			<% end %>
       			<%= f.label :email, "メールアドレス" %><br>
       			<%= f.email_field :email %><br>

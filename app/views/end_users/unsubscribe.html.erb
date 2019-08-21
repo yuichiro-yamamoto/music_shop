@@ -8,9 +8,10 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<%= form_tag(end_user_delete_path(current_end_user.id),:method => 'post') do %>
-				<%= email_field_tag :delete_email %>
-				<%= submit_tag %>
+			<%= form_with url: delete_end_user_path(current_end_user.id), method: :post, local: true do |f| %>
+				<%= f.label :unsubscribe_email, "メールアドレス" %><br>
+				<%= f.email_field :unsubscribe_email, placeholder:"ここにメールアドレスを入力", class:"col-xs-3" %>
+				<%= f.submit %>
 			<% end %>
         </div>
     </div>

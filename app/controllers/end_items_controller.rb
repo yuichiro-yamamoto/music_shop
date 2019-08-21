@@ -9,9 +9,6 @@ class EndItemsController < ApplicationController
 		@ranking = Item.includes(:artist).order(sale_number: "DESC").limit(10)
 	end
 
-	def search_result
-	end
-
 	def search
 	end
 
@@ -21,5 +18,4 @@ class EndItemsController < ApplicationController
 		@review = Review.new
 		@reviews = Review.includes(:artist).page(params[:page]).per(5).order(id: "DESC")
 	end
-
 end
