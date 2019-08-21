@@ -1,16 +1,16 @@
 class AdminPurchaseHistoriesController < ApplicationController
   def index
-    @purchase_histories = PurchaseHistory.all
+    @purchase_histories = PurchaseDetail.all
   end
   def show
-    @purchase_history = PurchaseHistory.find(params[:id])
+    @purchase_history = PurchaseDetail.find(params[:id])
   end
   def update
-    purchase_history = PurchaseHistory.update
+    purchase_history = PurchaseDetail.update
     purchase_history.update(purchase_history_params)
   end
   def search
-    purchase_history = PurchaseHistory.find
+    @purchase_histories = PurchaseDetail.where('shipping_status LIKE ?', "%#{params[:shipping_status]}" )
   end
 
   private

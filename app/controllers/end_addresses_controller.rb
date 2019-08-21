@@ -19,7 +19,7 @@ class EndAddressesController < ApplicationController
 	def destroy
 		user = Address.find(params[:id])
 		user.destroy
-		redirect_to end_user_path
+		redirect_to end_user_path(current_end_user.id)
 	end
 
 

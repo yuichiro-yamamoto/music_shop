@@ -72,3 +72,5 @@ gem "bootstrap-sass"
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+gem 'activerecord-import'

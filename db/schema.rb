@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_172822) do
+ActiveRecord::Schema.define(version: 2019_08_21_080210) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id", null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_172822) do
   end
 
   create_table "purchase_details", force: :cascade do |t|
-    t.integer "purchase_history_id_id", null: false
+    t.integer "purchase_history_id", null: false
     t.integer "shipping_status", null: false
     t.integer "sale_number", null: false
     t.integer "price_history", null: false
@@ -138,7 +138,9 @@ ActiveRecord::Schema.define(version: 2019_08_16_172822) do
     t.string "name_history", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["purchase_history_id_id"], name: "index_purchase_details_on_purchase_history_id_id"
+    t.integer "method_of_payment"
+    t.string "item_image_id"
+    t.index ["purchase_history_id"], name: "index_purchase_details_on_purchase_history_id"
   end
 
   create_table "purchase_histories", force: :cascade do |t|

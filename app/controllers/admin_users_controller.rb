@@ -15,6 +15,9 @@ class AdminUsersController < ApplicationController
 	end
 
 	def destroy
+		user = EndUser.find(params[:id])
+		user.destroy
+		redirect_to admin_users_path
 	end
 
 	def search
