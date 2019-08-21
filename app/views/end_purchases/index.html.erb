@@ -1,3 +1,9 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
 <%= form_with url: end_purchases_path, method: :post, local: true do |f| %>
 
   <% @carts.each do |cart| %>
@@ -11,9 +17,9 @@
     <%= @addresses[0]['postal_code'] %><br>
     <%= @addresses[0]['address'] %><br>
     電話番号<%= @addresses[0]['telephone_number'] %><br>
-
-    <%= f.select "method_of_payment#{cart['id']}", [ ['銀行振込', '銀行振込'], ['クレジットカード', 'クレジットカード'], ['代金引換', '代金引換'] ], :selected=>@user['usually_payment'] %>
   <% end %>
+
+  <%= f.select :method_of_payment, [ ['銀行振込', '銀行振込'], ['クレジットカード', 'クレジットカード'], ['代金引換', '代金引換'] ], :selected=>@user['usually_payment'] %>
 
   <div>
     注文内容確定<br>

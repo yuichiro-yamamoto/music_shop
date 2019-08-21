@@ -1,3 +1,9 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
 <h1>マイページ</h1>
 <h1>仮作成</h1>
 
