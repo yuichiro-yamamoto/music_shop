@@ -1,5 +1,7 @@
 <%= render 'admin_header/header' %>
 
+< %= form_with url: search_admin_purchase_histories_path
+
 <table class="table">
   <thead>
     <tr>
@@ -9,20 +11,20 @@
       <th>商品名</th>
       <th>歌手名</th>
       <th>枚数</th>
-      <th>発送詳細</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <tbody>
     <% @purchase_histories.each do |p| %>
       <tr>
-        <td><%= p. %></td>
-        <td><%= p. %></td>
-        <td><%= p. %></td>
-        <td><%= p. %></td>
-        <td><%= p. %></td>
-        <td><%= p. %></td>
-        <td><%= link_to "a" purchase_histories</td>
+        <td><%= p.purchase_detail_id %></td>
+        <td><%= p.created_at %></td>
+        <td><%= p.shipping_status %></td>
+        <td><%= p.item_name_history %></td>
+        <td><%= p.artist_name_history %></td>
+        <td><%= p.sale_number %></td>
+        <td><%= link_to "", purchase_history_path(p.id), class: "glyphicon glyphicon-arrow-right" %></td>
       </tr>
-    <% end%>
+    <% end %>
   </tbody>
 </table>

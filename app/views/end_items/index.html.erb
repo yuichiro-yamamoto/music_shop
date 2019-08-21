@@ -1,3 +1,9 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
 <div class="container">
  	<div class="row">
 		<div class="col-xs-9">

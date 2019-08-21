@@ -1,0 +1,22 @@
+<div class="container end-header">
+  <p class="m.login">ログイン中</p>
+  <div class="row">
+      <div class="col-md-1">
+		<%= link_to "MUSIC SHOP", end_items_path, class: 'm.shop_name' %>
+      </div>
+      <div class="col-md-8">
+		<%= form_with url: search_end_items_path, method: :post, local: :true do |f| %>
+		  <%= f.text_field class: "input-xlarge"  %><%= f.submit "検索", class: 'm.submit_button' %>
+		<% end %>
+	  </div>
+	  <div class="col-md-1">
+		<%= link_to "カート", end_cart_items_path(end_user_id: current_end_user[:id]) %>
+	  </div>
+	  <div class="col-md-1">
+		<%= link_to "マイページ", end_user_path(current_end_user) %>
+	  </div>
+	  <div class="col-md-1">
+		<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+	  </div>
+  </div>
+</div>
