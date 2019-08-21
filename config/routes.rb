@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'end_items#index'
+
   resources :end_users, only: [:show, :edit, :update]do
     resources :end_addresses, only: [:new, :create, :destroy]
     get 'unsubscribe', :on => :collection
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :end_purchase_histories, only: [:index]
+
   resources :end_cart_items, only: [:update, :index, :destroy]do
     post 'add', :on => :collection
   end
@@ -17,16 +19,21 @@ Rails.application.routes.draw do
     post 'search', :on => :collection
     get 'search', :on => :collection
   end
+
   resources :end_purchases, only: [:index, :create]
+
   resources :admin_users, only: [:index, :update, :destroy, :edit]do
     get 'search', :on => :collection
   end
+
   resources :admin_items, except: [:show]do
     get 'search', :on => :collection
   end
+
   resources :admin_reviews, only: [:edit, :update, :destroy, :index]do
     get 'search', :on => :collection
   end
+
   resources :admin_purchase_histories, only: [:update, :show, :index]do
     get 'search', :on => :collection
   end
