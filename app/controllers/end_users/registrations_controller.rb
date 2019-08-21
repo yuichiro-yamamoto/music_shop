@@ -15,7 +15,7 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
     super
     end_user = EndUser.find_by(email: params['end_user']['email'])
     if !end_user.nil?
-      Address.create(address: params["telephone_number"], postal_code: params["postal_code"], telephone_number:params["telephone_number"], main_flag: true, name: end_user["last_name"] << end_user['first_name'], end_user_id: end_user['id'])
+      Address.create(address: params["address"], postal_code: params["postal_code"], telephone_number:params["telephone_number"], main_flag: true, name: end_user["last_name"] << end_user['first_name'], end_user_id: end_user['id'])
     end
   end
 

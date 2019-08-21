@@ -1,6 +1,6 @@
 <div style="text-align:center;"><h1>新規追加住所登録</h1></div>
 
-  <%= form_with model: @user, url: end_user_end_addresses_path, local: true do |form| %>
+  <%= form_with model: @user, url: end_addresses_path, local: true do |form| %>
 
    <div style="text-align:center;"><h3>名前</h3></div>
      <p class="text-center"><%= form.text_field :name %></p>
