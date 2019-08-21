@@ -1,13 +1,17 @@
 <h1 class="cart-head">カート</h1>
 
-<%= link_to "購入する", end_purchases_path %>
+<%= form_with url: end_cart_item_path("cart"), method: :put, local: true do |f| %>
 
-<% @carts.each do |cart| %>
-  <div><%= cart.image %></div>
-  <span><%= cart.name %></span><br>
-  <span><%= cart.artist %></span><br>
-  <span><%= cart.price %></span>
-  <div><%= cart.purchase_quantity %></div>
-  <div><%= cart.condition %></div>
-  <%= link_to "削除", current_end_cart_path, method: :delete %>
+  <% @carts.each do |cart| %>
+    <%= image_tag attachment_url(cart['item'], :item_image, :fill, 80, 80, format: "jpg"),class: 'attachment user profile_image fallback' %><br>
+    <%= cart["name"] %><br>
+    <%= cart['artist'] %><br>
+    <%= cart['price'] %><br>
+    <%= f.text_field cart['id'], value: cart['purchase_quantity'] %><br>
+    <%= cart['condition'] %><br>
+    <%= link_to "削除", end_cart_item_path(cart['id']), method: :delete %><br>
+  <% end %>
+
+  <%= f.submit '購入' %>
+
 <% end %>
