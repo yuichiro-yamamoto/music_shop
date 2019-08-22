@@ -1,7 +1,7 @@
 <% if end_user_signed_in? %>
-  <%= render 'end_header/login_header' %>
+	<%= render 'end_header/login_header' %>
 <% else %>
-  <%= render 'end_header/not_login_header' %>
+	<%= render 'end_header/not_login_header' %>
 <% end %>
 
 <div class="container">
@@ -43,18 +43,21 @@
                 <%= f.text_field :purchase_quantity %><br>
                 <%= f.submit "この商品をカートに入れる" %>
       		<% end %>
-            <% if @item.favorited_by?(current_end_user) %>
-  				<li>
-    				<%= link_to end_item_end_favorites_path(@item), method: :delete do %>
-      					いいね<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-    				<% end %>
-  				</li>
+      		<% if end_user_signed_in? %>
+            	<% if @item.favorited_by?(current_end_user) %>
+  					<li>
+    					<%= link_to end_item_end_favorites_path(@item), method: :delete do %>
+      						いいね<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+    					<% end %>
+  					</li>
+				<% else %>
+  					<li>
+    					<%= link_to end_item_end_favorites_path(@item), method: :post do %>
+      						いいね<i class="fa fa-heart-o" aria-hidden="true"></i>
+    					<% end %>
+  					</li>
+				<% end %>
 			<% else %>
-  				<li>
-    				<%= link_to end_item_end_favorites_path(@item), method: :post do %>
-      					いいね<i class="fa fa-heart-o" aria-hidden="true"></i>
-    				<% end %>
-  				</li>
 			<% end %>
 		</div>
 	</div>

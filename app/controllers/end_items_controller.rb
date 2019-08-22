@@ -10,6 +10,13 @@ class EndItemsController < ApplicationController
 	end
 
 	def search
+		if params[:search]
+			@items = Item.includes(:artist).where('item_name LIKE ?', "%#{params[:search]}%").page(params[:page]).per(10).order(id: "DESC")
+		else
+			redirect_to end_items_path
+		end
+		@tax_rate = "1.08"
+		@ranking = Item.includes(:artist).order(sale_number: "DESC").limit(10)
 	end
 
 	def show

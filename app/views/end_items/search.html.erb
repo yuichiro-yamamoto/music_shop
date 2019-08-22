@@ -1,0 +1,37 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
+<div class="container">
+ 	<div class="row">
+		<div class="col-xs-9">
+			<h4>検索結果</h4>
+			<p>商品の検索結果<%= @items.count %>件</p>
+			<ul>
+				<% @items.each do |item| %>
+					<li><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: "jpeg" %></li>
+					<li><%= link_to item.item_name, end_item_path(item.id) %></li>
+					<li><%= item.artist.artist_name %></li>
+					<li><%= (BigDecimal(item.price) * BigDecimal(@tax_rate)).ceil %></li>
+					<li><%= item.genre.genre_name %></li>
+					<li><%= item.sale_condition %></li>
+					<li><%= item.label.label_name %></li>
+					<li>
+						<%= form_with url: add_end_cart_items_path, method: :post, local: true do |f| %>
+							<%= f.hidden_field :item_id, :value => item.id %>
+                			<%= f.label :purchase_quantity, "数量:" %>
+                			<%= f.text_field :purchase_quantity %><br>
+                			<%= f.submit "この商品をカートに入れる" %>
+                		<% end %>
+                	</li>
+				<% end %>
+			</ul>
+			<%= paginate @items %>
+		</div>
+
+<%= render 'ranking', ranking: @ranking %>
+
+	</div>
+</div>
