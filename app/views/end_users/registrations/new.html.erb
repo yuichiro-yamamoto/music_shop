@@ -1,3 +1,9 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -67,5 +73,3 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "end_users/shared/links" %>

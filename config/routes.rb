@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   end
 
   resources :end_addresses, only: [:new, :create, :destroy]
+
   resources :end_purchase_histories, only: [:index]
 
   resources :end_cart_items, only: [:update, :index, :destroy]do
     post 'add', :on => :collection
   end
+
   resources :end_items, only: [:index, :show]do
     resources :end_reviews, only: [:create]
     resource :end_favorites, only: [:create, :destroy]
@@ -40,20 +42,19 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, skip: :all
   devise_scope :admin_user do
-    get 'admin_users/devise/sign_in' , to: 'devise/sessions#new', as: :new_admin_user_session
-    post 'admin_users/devise/sign_in' , to: 'devise/sessions#create', as: :admin_user_session
-    delete 'admin_users/devise/sign_out' , to: 'devise/sessions#destroy', as: :destroy_admin_user_session
+    get 'admin_users/devise/sign_in' , to: 'admin_users/sessions#new', as: :new_admin_user_session
+    get 'admin_users/devise/sign_out' , to: 'devise/sessions#destroy', as: :destroy_admin_user_session
+    post 'admin_users/devise/sign_in' , to: 'admin_users/sessions#create', as: :admin_user_session
   end
 
   devise_for :end_users, skip: :all
   devise_scope :end_user do
-    get 'end_users/devise/sign_in' , to: 'devise/sessions#new', as: :new_end_user_session
-    post 'end_users/devise/sign_in' , to: 'devise/sessions#create', as: :end_user_session
-    delete 'end_users/devise/sign_out' , to: 'devise/sessions#destroy', as: :destroy_end_user_session
-    get '/end_users/devise/sign_out' => 'devise/sessions#destroy'
+    get 'end_users/devise/sign_in' , to: 'end_users/sessions#new', as: :new_end_user_session
+    get '/end_users/devise/sign_out' => 'devise/sessions#destroy', as: :destroy_end_user_session
+    post 'end_users/devise/sign_in' , to: 'end_users/sessions#create', as: :end_user_session
+
     get 'end_users/devise/sign_up' , to: 'end_users/registrations#new', as: :new_end_user_registration
     post 'end_users/devise' , to: 'end_users/registrations#create', as: :end_user_registration
-    delete 'end_users/devise' , to: 'devise/registrations#destroy', as: :destroy_end_user_registration
   end
 
 end

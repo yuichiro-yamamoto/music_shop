@@ -1,3 +1,9 @@
+<% if end_user_signed_in? %>
+  <%= render 'end_header/login_header' %>
+<% else %>
+  <%= render 'end_header/not_login_header' %>
+<% end %>
+
 <h1 class="cart-head">カート</h1>
 
 <%= form_with url: end_cart_item_path("cart"), method: :put, local: true do |f| %>
@@ -12,6 +18,10 @@
     <%= link_to "削除", end_cart_item_path(cart['id']), method: :delete %><br>
   <% end %>
 
-  <%= f.submit '購入' %>
+  <% if is_sale(@is_able_purchase_list) %>
+    <%= f.submit '購入' %>
+  <% else %>
+    <%= f.submit '購入量更新' %>
+  <% end %>
 
 <% end %>
