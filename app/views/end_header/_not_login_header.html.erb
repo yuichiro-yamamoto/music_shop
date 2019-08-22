@@ -4,8 +4,9 @@
 		<%= link_to "MUSIC SHOP", end_items_path, class: 'm.shop_name' %>
       </div>
       <div class="col-md-8">
-		<%= form_with url: search_end_items_path, method: :post, local: :true do |f| %>
-		  <%= f.text_field class: "input-xlarge" %><%= f.submit "検索", class: 'm.submit_button' %>
+		<%= form_with url: search_end_items_path, method: :get, local: :true do |f| %>
+		  <%= f.text_field :search, class: "input-xlarge"  %>
+		  <%= f.submit "検索", class: 'm.submit_button' %>
 		<% end %>
 	  </div>
 	  <div class="col-md-1">
