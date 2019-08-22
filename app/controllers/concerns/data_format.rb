@@ -4,6 +4,7 @@ module DataFormat
   included do
     def cart_items_format_array(cart_items_model)
       array = []
+
       cart_items_model.each do |cart|
         list = {}
         item = Item.find(cart["item_id"])
@@ -15,8 +16,45 @@ module DataFormat
         list['condition'] = item["sale_condition"]
         list['item'] = item
         array.push(list)
+
       end
+
       array
+
+
+    end
+
+    def stock_check_list(cart_items_model)
+      #{item["id"] : cart_item["purchase_quantity"]}
+      request_purchase_amount_list = request_purchase_amount_list(cart_items_model)
+
+      # is_able_purchase_list = {cart['id'] : true or false}
+      is_able_purchase_list = {}
+      cart_items_model.each do |cart|
+        #TODO アイテムが消された場合のエラー処理
+        item = Item.find(cart["item_id"])
+
+        is_able_purchase_list["#{cart['id']}"] = item['stock'] >= request_purchase_amount_list[cart['item_id'].to_s] ? true : false
+
+      end
+
+      is_able_purchase_list
+    end
+
+    def request_purchase_amount_list(cart_items_model)
+      #{item["id"] : cart_item["purchase_quantity"]}
+      request_purchase_amount_list = {}
+
+      cart_items_model.each do |cart|
+        item = Item.find(cart["item_id"])
+        if request_purchase_amount_list.has_key?(item['id'].to_s)
+          request_purchase_amount_list["#{item['id']}"] += cart["purchase_quantity"]
+        else
+          request_purchase_amount_list["#{item['id']}"] = cart["purchase_quantity"]
+        end
+      end
+
+      request_purchase_amount_list
     end
 
     def purchase_details_array(purchase_history_id, cart_items_model, params)
@@ -62,6 +100,18 @@ module DataFormat
       end
 
       500 * list.length
+    end
+
+    def is_sale(is_able_purchase_list)
+    is_sale = true
+    is_able_purchase_list.each do |cart_id, flag|
+      unless flag
+        is_sale = flag
+        break
+      end
+    end
+
+    is_sale
     end
 
 
