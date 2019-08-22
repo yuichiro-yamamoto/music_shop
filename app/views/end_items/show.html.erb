@@ -34,14 +34,15 @@
 		</div>
 		<div class="col-xs-4">
 			<div>
-				<p>▼税抜き価格(暫定)</p>
-				<%= @item.price %>
+				<p>▼価格</p>
+				<%= (BigDecimal(@item.price) * BigDecimal(@tax_rate)).ceil %>
 			</div>
-			<%= form_tag(add_end_cart_items_path, method: :post) do %>
-                <%= hidden_field_tag(:item_id, @item["id"]) %>
-                数量<%= text_field_tag(:purchase_quantity) %><br>
-                <%= submit_tag("この商品をカートに入れる") %>
-      <% end %>
+			<%= form_with url: add_end_cart_items_path, method: :post, local: true do |f| %>
+				<%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.label :purchase_quantity, "数量:" %>
+                <%= f.text_field :purchase_quantity %><br>
+                <%= f.submit "この商品をカートに入れる" %>
+      		<% end %>
             <% if @item.favorited_by?(current_end_user) %>
   				<li>
     				<%= link_to end_item_end_favorites_path(@item), method: :delete do %>

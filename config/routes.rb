@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root to: 'end_items#index'
+
   resources :end_users, only: [:show, :edit, :update]do
-    get 'unsubscribe', :on => :collection
-    post 'delete'
+    member do
+      get 'unsubscribe'
+      post 'delete'
+    end
   end
 
   resources :end_addresses, only: [:new, :create, :destroy]
