@@ -4,26 +4,31 @@
   <%= render 'end_header/not_login_header' %>
 <% end %>
 
-<h2>購入履歴一覧</h2>
+<div class="t_body">
 
-<% @purchase_history_array.each do |details| %>
-  スタート<br>
-  <% details.each do |detail| %>
-    配送状況<%= detail['shipping_status'] %><br>
-    <%= puts '-------------------------------' %>
-    <%= puts detail['item_image_id'].inspect %>
-    <%= image_tag attachment_url(detail, :item_image, :fill, 80, 80, format: "jpg"),class: 'attachment user profile_image fallback' %><br>
-    <%= detail['item_name_history'] %><br>
-    <%= detail['artist_name_history"'] %><br>
-    <%= detail['created_at'] %><br>
-    <%= detail['price_history'] * detail.purchase_history['consumption_tax'] / 100 %><br>
-    購入数：　<%= detail['sale_number'] %><br>
-  　<%= detail['postal_code_history'] %><br>
-    宛先：　<%= detail['address_history'] %><br>
-    <%= detail.purchase_history['total_price'] -  detail.purchase_history['shipping_charge']%><br>
-    <%= detail.purchase_history['shipping_charge'] %><br>
-    <%= detail.purchase_history['total_price'] %>
+  <div class="t_head">購入履歴一覧</div>
 
+   <% @purchase_history_array.each do |details| %>
+    
+    スタート<br>
+     <% details.each do |detail| %>
+       配送状況<%= detail['shipping_status'] %><br>
+        <%= puts '-------------------------------' %>
+        <%= puts detail['item_image_id'].inspect %>
+        <%= image_tag attachment_url(detail, :item_image, :fill, 80, 80, format: "jpg"),class: 'attachment user profile_image fallback' %><br>
+        <%= detail['item_name_history'] %><br>
+        <%= detail['artist_name_history"'] %><br>
+        <%= detail['created_at'] %><br>
+        <%= detail['price_history'] * detail.purchase_history['consumption_tax'] / 100 %><br>
+        購入数：　<%= detail['sale_number'] %><br>
+      　<%= detail['postal_code_history'] %><br>
+        宛先：　<%= detail['address_history'] %><br>
+        <%= detail.purchase_history['total_price'] -  detail.purchase_history['shipping_charge']%><br>
+        <%= detail.purchase_history['shipping_charge'] %><br>
+        <%= detail.purchase_history['total_price'] %>
+
+     <% end %>
+　  エンド<br>
   <% end %>
-　エンド<br>
-<% end %>
+
+</div>
